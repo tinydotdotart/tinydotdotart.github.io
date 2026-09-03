@@ -34,10 +34,10 @@ const isExternal = post.videoSource === 'link';
 <Layout title={`${post.title} | Journal`}>
   <article class="pb-20 px-4 md:px-8 max-w-6xl mx-auto">
     
-    {/* Media Container: Responsive, balanced size */}
-    <div class="max-w-3xl mx-auto overflow-hidden rounded-2xl md:rounded-3xl mb-10 md:mb-16 bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5">
+    {/* Media Container: Adapts dynamically to horizontal and vertical without cropping */}
+    <div class="max-w-4xl mx-auto mb-10 md:mb-16 flex justify-center">
       {finalVideoUrl ? (
-        <div class="aspect-video w-full">
+        <div class="aspect-video w-full overflow-hidden rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5 shadow-sm">
           {isExternal ? (
             <iframe src={finalVideoUrl} class="w-full h-full" allow="autoplay; fullscreen" allowfullscreen></iframe>
           ) : (
@@ -45,7 +45,13 @@ const isExternal = post.videoSource === 'link';
           )}
         </div>
       ) : post.mainImageUrl && (
-        <img src={post.mainImageUrl} class="w-full max-h-[480px] object-cover object-center" alt={post.title} />
+        <div class="inline-flex justify-center items-center overflow-hidden rounded-2xl md:rounded-3xl bg-zinc-100/60 dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 p-2 md:p-3 shadow-sm max-w-full">
+          <img
+            src={post.mainImageUrl}
+            class="max-h-[70vh] md:max-h-[580px] w-auto max-w-full h-auto object-contain rounded-xl md:rounded-2xl"
+            alt={post.title}
+          />
+        </div>
       )}
     </div>
 
