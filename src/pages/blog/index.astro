@@ -1,0 +1,136 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { client } from "../../lib/sanity.ts";
+import type { Post } from "../../lib/types.ts";
+
+const posts: Post[] =
+  await client.fetch(`*[_type == "post"] | order(publishedAt desc){
+  title, 
+  slug, 
+  publishedAt, 
+  excerpt,
+  "mainImageUrl": mainImage.asset->url
+}`);
+---
+
+<Layout title="Journal | TinyDotDotArt">
+  <main class="pb-20 px-4 md:px-8 max-w-6xl mx-auto">
+    <header
+      class="pb-10 md:pb-14 border-b border-black/5 dark:border-white/5 mb-12 md:mb-16"
+    >
+      <div class="mb-8 md:mb-10">
+        <span
+          class="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-zinc-400 font-medium block mb-2"
+        >
+          Artist Journal
+        </span>
+        <h1
+          class="font-serif text-5xl md:text-8xl italic text-zinc-900 dark:text-white tracking-tight"
+        >
+          Journal
+        </h1>
+      </div>
+
+      {/* Featured Story */}
+      <div
+        class="bg-zinc-50/80 dark:bg-zinc-900/50 rounded-3xl p-6 md:p-10 border border-black/5 dark:border-white/5 space-y-6"
+      >
+        <h2
+          class="font-serif text-2xl md:text-3xl italic text-zinc-900 dark:text-white"
+        >
+          Stepping into the Fairy Tale
+        </h2>
+
+        <div
+          class="space-y-5 text-zinc-600 dark:text-zinc-300 text-sm md:text-base font-light leading-relaxed"
+        >
+          <p>
+            Growing up in China, Denmark was always this mythical &ldquo;kingdom
+            of fairy tales&rdquo; to me, all thanks to Hans Christian Andersen.
+            We loved reading his stories, but we were often told that they were
+            just tales that didn&rsquo;t exist in the real world. Yet, walking
+            these streets and passing by the beautiful little Danish houses, I
+            felt like I had stepped straight into that supposedly imaginary
+            world. Each small house seemed like a living portrait of the
+            owner&rsquo;s vision of a happy life, and simply observing them
+            filled my heart with warmth and joy.
+          </p>
+
+          <p>
+            That feeling only deepened when I later traveled to
+            historic towns like Ribe, Odense, and Esbjerg. Discovering even more
+            of these enchanting homes left a permanent mark on my heart. I
+            realized I couldn&rsquo;t just let these precious moments and
+            feelings fade into memory; I had to capture them. I started painting
+            the houses to preserve the profound emotion they woke in me, with
+            the hope that anyone who looks at my canvases might experience that
+            exact same beauty, warmth, and wonder.
+          </p>
+
+          <p>
+            In this journal, I&rsquo;ll share the stories behind my paintings,
+            the inspiration I draw from these houses, and the journey of
+            capturing their essence on canvas. I hope that through my work, you
+            too can step into this fairy tale world and feel the magic that has
+            so deeply touched my heart.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="space-y-16 md:space-y-24">
+      {
+        posts.map((post: Post, index: number) => (
+          <a
+            href={`/blog/${post.slug.current}`}
+            class="group block relative active:opacity-70 transition-opacity duration-200"
+          >
+            <div
+              class={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} gap-6 md:gap-16 items-center`}
+            >
+              {/* Image Container: Full color on mobile, Grayscale hover on desktop */}
+              <div class="w-full md:w-1/2 overflow-hidden rounded-2xl aspect-video md:aspect-[4/3] bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5">
+                {post.mainImageUrl && (
+                  <img
+                    src={post.mainImageUrl}
+                    alt={post.title}
+                    class="w-full h-full object-cover transition-all duration-1000 lg:grayscale lg:group-hover:grayscale-0 lg:group-hover:scale-105"
+                  />
+                )}
+              </div>
+
+              <div class="w-full md:w-1/2 space-y-3 md:space-y-4">
+                <time class="text-[9px] uppercase tracking-[0.2em] text-zinc-400 block">
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
+
+                <h2 class="text-2xl md:text-5xl font-serif text-zinc-900 dark:text-white leading-tight transition-colors duration-500 lg:group-hover:text-zinc-600 lg:dark:group-hover:text-zinc-300">
+                  {post.title}
+                </h2>
+
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-3">
+                  {post.excerpt}
+                </p>
+
+                <div class="pt-2 md:pt-4 flex items-center space-x-4">
+                  <span class="w-6 md:w-8 h-[1px] bg-black dark:bg-white origin-left transition-transform duration-500 lg:group-hover:scale-x-150" />
+                  <span class="text-[9px] uppercase tracking-widest font-bold">
+                    Read Entry
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @reference "../../styles/global.css";
+</style>

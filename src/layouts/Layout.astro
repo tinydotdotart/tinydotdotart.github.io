@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+import ThemeScript from "../components/ThemeScript.astro";
+import Navbar from "../components/Navbar.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <ThemeScript />
+    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-white text-black dark:bg-[#0a0a0a] dark:text-white font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300"
+  >
+    <Navbar />
+
+    <main class="pt-32 animate-in">
+      <slot />
+    </main>
+
+    <footer
+      class="py-20 text-center opacity-30 text-xs tracking-widest uppercase border-t border-black/5 dark:border-white/5 mx-8"
+    >
+      &copy; {new Date().getFullYear()} TinyDotDotArt &bull; All Rights Reserved
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Global Entrance animation */
+  .animate-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth scrolling for the whole site */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

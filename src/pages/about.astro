@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About | TinyDotDotArt">
+  <main class="pt-8 md:pt-14 pb-10 px-6 md:px-8 max-w-5xl mx-auto min-h-fit">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div class="relative group order-first">
+        <div
+          class="absolute -inset-2 bg-zinc-50 dark:bg-zinc-900 rounded-[2.5rem] -z-10"
+        >
+        </div>
+        <img
+          src="/artist-portrait.jpg"
+          alt="TinyDotDotArt"
+          class="rounded-[2rem] w-full aspect-[4/5] md:aspect-[3/4] object-cover shadow-2xl transition-all duration-700"
+        />
+      </div>
+
+      <div class="space-y-6 md:space-y-8 flex flex-col justify-center">
+        <div>
+          <h1
+            class="font-serif text-5xl md:text-7xl italic leading-tight mb-4 text-black dark:text-white"
+          >
+            TinyDotDotArt
+          </h1>
+          <div class="w-12 h-[1px] bg-black/20 dark:bg-white/20 mb-6"></div>
+        </div>
+
+        <div class="prose dark:prose-invert prose-neutral max-w-none">
+          <p
+            class="pb-4 md:pb-6 text-lg md:text-xl font-light text-zinc-700 dark:text-zinc-300 leading-relaxed"
+          >
+            A visual artist exploring the boundaries between classical medium
+            and digital interpretation.
+          </p>
+          <p
+            class="text-zinc-500 dark:text-zinc-500 leading-relaxed text-sm md:text-base"
+          >
+            A visual artist exploring the emotional resonance of architecture
+            and storytelling. Originally from China and now based in Denmark,
+            the artwork is defined by a deep fascination with traditional Danish
+            houses and the joyful visions of life they represent. Each painting
+            serves as a bridge between the quiet solitude of solitary walks and
+            the profound warmth of discovering a world as beautiful as a Hans
+            Christian Andersen fairy tale.
+          </p>
+        </div>
+
+        <div
+          class="pt-8 md:pt-12 border-t border-black/10 dark:border-white/10"
+        >
+          <p
+            class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] opacity-40 mb-6 font-bold"
+          >
+            Exhibitions
+          </p>
+          <ul class="space-y-4 text-xs md:text-sm">
+            <li
+              class="flex justify-between items-end border-b border-black/5 dark:border-white/5 pb-2"
+            >
+              <span class="font-medium">European Evening Art Exhibition</span>
+              <span class="opacity-40 italic">2026</span>
+            </li>
+            <li
+              class="flex justify-between items-end border-b border-black/5 dark:border-white/5 pb-2"
+            >
+              <span class="font-medium"
+                >Trekanten's Creative Workshop Exhibition</span
+              >
+              <span class="opacity-40 italic">2026</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a
+            href="/contact"
+            class="inline-block w-full md:w-auto text-center border border-black/10 dark:border-white/10 px-8 py-4 rounded-full text-[10px] uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300"
+          >
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Page-specific mobile tweaks */
+  @media (max-width: 380px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
