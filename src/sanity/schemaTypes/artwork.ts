@@ -25,10 +25,10 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Oil Painting', value: 'oil' },
+          // { title: 'Oil Painting', value: 'oil' },
           { title: 'Acrylic Painting', value: 'acrylic' },
           { title: 'Sketch', value: 'sketch' },
-          { title: 'Watercolor', value: 'watercolor' },
+          // { title: 'Watercolor', value: 'watercolor' },
         ],
       },
       validation: (Rule) => Rule.required(),
