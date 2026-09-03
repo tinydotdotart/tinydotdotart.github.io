@@ -4,13 +4,14 @@ import { client } from "../lib/sanity.ts";
 import type { Artwork } from "../lib/types.ts";
 
 const works: Artwork[] =
-  await client.fetch(`*[_type == "artwork" && isAvailable == true]{
+  await client.fetch(`*[_type == "artwork" && isAvailable == true] | order(coalesce(order, 9999) asc, _createdAt desc){
   title, 
   price, 
   medium,
   description,
   "imageUrl": image.asset->url, 
-  "slug": slug.current
+  "slug": slug.current,
+  order
 }`);
 
 const formatPrice = (price: number) => {

@@ -33,6 +33,13 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    // Display Order
+    defineField({
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Display sequence (e.g. 1, 2, 3...). Lower numbers appear first. Items without an order appear after.',
+    }),
     // Visibility Toggles
     defineField({
       name: 'showInGallery',

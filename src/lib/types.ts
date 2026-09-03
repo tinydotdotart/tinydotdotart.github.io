@@ -5,6 +5,7 @@ export interface Artwork {
   medium: string;
   price?: number;
   slug?: string;
+  order?: number;
   showInGallery?: boolean;
   isAvailable?: boolean;
 }

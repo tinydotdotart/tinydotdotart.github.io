@@ -4,19 +4,20 @@ import { client } from "../lib/sanity.ts";
 import type { Artwork } from "../lib/types.ts";
 
 const artworks: Artwork[] =
-  await client.fetch(`*[_type == "artwork" && showInGallery == true]{
+  await client.fetch(`*[_type == "artwork" && showInGallery == true] | order(coalesce(order, 9999) asc, _createdAt desc){
   title, 
   "imageUrl": image.asset->url, 
   description, 
-  medium
+  medium,
+  order
 }`);
 
 const filters = [
   { label: "All", value: "all" },
-  { label: "Oil", value: "oil" },
   { label: "Acrylic", value: "acrylic" },
-  { label: "Watercolor", value: "watercolor" },
-  { label: "Sketches", value: "sketch" },
+  // { label: "Oil", value: "oil" },
+  // { label: "Watercolor", value: "watercolor" },
+  // { label: "Sketches", value: "sketch" },
 ];
 ---
 
