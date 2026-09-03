@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 — Page Not Found | TinyDotDotArt">
+  <div class="min-h-[65vh] flex flex-col items-center justify-center px-4 md:px-8 pb-20">
+    <div
+      class="relative w-full max-w-2xl mx-auto p-8 md:p-14 rounded-[2.5rem] bg-zinc-50/70 dark:bg-zinc-900/50 border border-black/5 dark:border-white/10 backdrop-blur-sm shadow-sm text-center overflow-hidden"
+    >
+      <!-- Subtle artistic ambient glow accents -->
+      <div
+        class="absolute -top-16 -right-16 w-52 h-52 bg-zinc-200/50 dark:bg-zinc-800/40 rounded-full blur-3xl pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute -bottom-16 -left-16 w-52 h-52 bg-zinc-200/50 dark:bg-zinc-800/40 rounded-full blur-3xl pointer-events-none"
+      >
+      </div>
+
+      <div class="relative z-10 space-y-6">
+        <div>
+          <span
+            class="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-zinc-400 dark:text-zinc-500 font-medium block mb-3"
+          >
+            Error 404 &bull; Page Not Found
+          </span>
+          <h1
+            class="font-serif text-7xl sm:text-8xl md:text-9xl italic font-normal tracking-tight text-zinc-900 dark:text-white select-none leading-none"
+          >
+            404
+          </h1>
+        </div>
+
+        <div class="w-12 h-[1px] bg-black/20 dark:bg-white/20 mx-auto"></div>
+
+        <div class="space-y-3 max-w-md mx-auto">
+          <h2
+            class="font-serif italic text-2xl md:text-3xl text-zinc-800 dark:text-zinc-200 leading-snug"
+          >
+            A Blank Canvas
+          </h2>
+          <p
+            class="text-sm md:text-base font-light text-zinc-600 dark:text-zinc-400 leading-relaxed"
+          >
+            The piece you are looking for has been relocated, renamed, or
+            only exists in the artist's imagination.
+          </p>
+        </div>
+
+        <div
+          class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <a
+            href="/"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full text-[10px] uppercase tracking-widest font-medium bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:opacity-85 transition-all duration-300 shadow-sm"
+          >
+            Return to Gallery
+          </a>
+          <a
+            href="/purchase"
+            class="w-full sm:w-auto inline-flex items-center justify-center border border-black/10 dark:border-white/10 px-8 py-4 rounded-full text-[10px] uppercase tracking-widest font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-zinc-800 dark:text-zinc-200"
+          >
+            Available Works
+          </a>
+        </div>
+
+        <div class="pt-6 border-t border-black/5 dark:border-white/5">
+          <p
+            class="text-[9px] uppercase tracking-[0.3em] text-zinc-400 dark:text-zinc-500 mb-4 font-semibold"
+          >
+            Explore the Studio
+          </p>
+          <div
+            class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[10px] uppercase tracking-widest text-zinc-500 dark:text-zinc-400"
+          >
+            <a
+              href="/"
+              class="hover:text-zinc-900 dark:hover:text-white transition"
+              >Gallery</a
+            >
+            <span class="opacity-30">&bull;</span>
+            <a
+              href="/purchase"
+              class="hover:text-zinc-900 dark:hover:text-white transition"
+              >Purchase</a
+            >
+            <span class="opacity-30">&bull;</span>
+            <a
+              href="/blog"
+              class="hover:text-zinc-900 dark:hover:text-white transition"
+              >Journal</a
+            >
+            <span class="opacity-30">&bull;</span>
+            <a
+              href="/about"
+              class="hover:text-zinc-900 dark:hover:text-white transition"
+              >About</a
+            >
+            <span class="opacity-30">&bull;</span>
+            <a
+              href="/contact"
+              class="hover:text-zinc-900 dark:hover:text-white transition"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
