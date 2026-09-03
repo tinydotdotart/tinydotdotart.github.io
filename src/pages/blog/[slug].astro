@@ -34,8 +34,8 @@ const isExternal = post.videoSource === 'link';
 <Layout title={`${post.title} | Journal`}>
   <article class="pb-20 px-4 md:px-8 max-w-6xl mx-auto">
     
-    {/* Media Container: Responsive padding/radius for mobile */}
-    <div class="w-full overflow-hidden rounded-3xl md:rounded-[2.5rem] mb-10 md:mb-20 bg-zinc-100 dark:bg-zinc-900">
+    {/* Media Container: Responsive, balanced size */}
+    <div class="max-w-3xl mx-auto overflow-hidden rounded-2xl md:rounded-3xl mb-10 md:mb-16 bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5">
       {finalVideoUrl ? (
         <div class="aspect-video w-full">
           {isExternal ? (
@@ -45,7 +45,7 @@ const isExternal = post.videoSource === 'link';
           )}
         </div>
       ) : post.mainImageUrl && (
-        <img src={post.mainImageUrl} class="w-full h-auto object-contain" alt={post.title} />
+        <img src={post.mainImageUrl} class="w-full max-h-[480px] object-cover object-center" alt={post.title} />
       )}
     </div>
 
@@ -84,7 +84,7 @@ const isExternal = post.videoSource === 'link';
   }
 
   .blog-content :global(img) {
-    @apply rounded-2xl md:rounded-3xl my-8 md:my-12 shadow-lg md:shadow-xl;
+    @apply rounded-2xl md:rounded-3xl my-8 md:my-12 shadow-lg md:shadow-xl max-w-2xl mx-auto;
   }
 
   .blog-content :global(blockquote) {
