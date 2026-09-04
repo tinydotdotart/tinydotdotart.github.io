@@ -22,8 +22,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
     steps:
       - name: Checkout your repository
         uses: actions/checkout@v4
@@ -49,13 +47,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist # Astro's default output folder
-
-      # Runs AFTER the Pages artifact upload: `sanity deploy` rebuilds dist/
-      # with the Studio, which must never overwrite the uploaded site bundle.
-      - name: Deploy Sanity Studio
-        if: ${{ env.SANITY_AUTH_TOKEN != '' }}
-        continue-on-error: true
-        run: npx sanity deploy --url tinydotdotart -y
 
   deploy:
     needs: build
