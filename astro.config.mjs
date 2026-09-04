@@ -6,8 +6,8 @@ import { loadEnv } from 'vite';
 
 // Load environment variables
 const env = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
-const sanityProjectId = process.env.PUBLIC_SANITY_PROJECT_ID || env.PUBLIC_SANITY_PROJECT_ID || '';
-const sanityDataset = process.env.PUBLIC_SANITY_DATASET || env.PUBLIC_SANITY_DATASET || '';
+const sanityProjectId = process.env.PUBLIC_SANITY_PROJECT_ID || env.PUBLIC_SANITY_PROJECT_ID || 'k9f2u0i2';
+const sanityDataset = process.env.PUBLIC_SANITY_DATASET || env.PUBLIC_SANITY_DATASET || 'production';
 
 export default defineConfig({
   site: 'https://tinydotdotart.github.io',

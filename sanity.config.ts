@@ -6,8 +6,8 @@ export default defineConfig({
   name: 'default',
   title: 'TinyDotDotArt Portfolio Admin',
 
-  projectId: (import.meta.env && import.meta.env.PUBLIC_SANITY_PROJECT_ID) || process.env.PUBLIC_SANITY_PROJECT_ID || '',
-  dataset: (import.meta.env && import.meta.env.PUBLIC_SANITY_DATASET) || process.env.PUBLIC_SANITY_DATASET || '',
+  projectId: 'k9f2u0i2',
+  dataset: 'production',
 
   plugins: [structureTool()],
 
