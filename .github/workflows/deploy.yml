@@ -45,17 +45,17 @@ jobs:
           PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
           PUBLIC_SANITY_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET }}
 
-      - name: Deploy Sanity Studio
-        # Skipped until the SANITY_AUTH_TOKEN secret is added to the repo;
-        # never blocks the GitHub Pages deployment below.
-        if: ${{ env.SANITY_AUTH_TOKEN != '' }}
-        continue-on-error: true
-        run: npx sanity deploy --url tinydotdotart -y
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist # Astro's default output folder
+
+      # Runs AFTER the Pages artifact upload: `sanity deploy` rebuilds dist/
+      # with the Studio, which must never overwrite the uploaded site bundle.
+      - name: Deploy Sanity Studio
+        if: ${{ env.SANITY_AUTH_TOKEN != '' }}
+        continue-on-error: true
+        run: npx sanity deploy --url tinydotdotart -y
 
   deploy:
     needs: build
