@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const post = await client.fetch(`*[_type == "post" && slug.current == $slug][0]{
   title,
+  excerpt,
   body,
   publishedAt,
   videoSource,
@@ -31,7 +32,11 @@ const finalVideoUrl = post.videoSource === 'upload' ? post.uploadedVideoUrl : fo
 const isExternal = post.videoSource === 'link';
 ---
 
-<Layout title={`${post.title} | Journal`}>
+<Layout
+  title={`${post.title} | Journal`}
+  description={post.excerpt || `Read "${post.title}" on the TinyDotDotArt artist journal.`}
+  image={post.mainImageUrl}
+>
   <article class="pb-20 px-4 md:px-8 max-w-6xl mx-auto">
     
     {/* Media Container: Adapts dynamically to horizontal and vertical without cropping */}

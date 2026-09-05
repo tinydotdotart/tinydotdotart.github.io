@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 
 // Load environment variables
@@ -10,10 +11,11 @@ const sanityProjectId = process.env.PUBLIC_SANITY_PROJECT_ID || env.PUBLIC_SANIT
 const sanityDataset = process.env.PUBLIC_SANITY_DATASET || env.PUBLIC_SANITY_DATASET || 'production';
 
 export default defineConfig({
-  site: 'https://tinydotdotart.github.io',
+  site: 'https://www.tinydotdot.art',
   output: 'static',
 
   integrations: [
+    sitemap(),
     sanity({
       projectId: sanityProjectId,
       dataset: sanityDataset,
