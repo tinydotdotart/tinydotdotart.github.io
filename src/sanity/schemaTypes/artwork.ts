@@ -39,6 +39,7 @@ export default defineType({
       title: 'Display Order',
       type: 'number',
       description: 'Display sequence (e.g. 1, 2, 3...). Lower numbers appear first. Items without an order appear after.',
+      validation: (Rule) => Rule.integer().min(0),
     }),
     // Visibility Toggles
     defineField({
